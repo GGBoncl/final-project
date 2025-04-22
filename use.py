@@ -1,4 +1,8 @@
 from mind import store
 a = store()
 print(a.name)
-b = a.Add()
+c = input("Would you like to input the book? (yes or no)\n")
+if c == "yes":         
+    d = a.Add()
+else:
+    d = a.minus()

@@ -4,5 +4,4 @@ print(a.name)
 c = input("Would you like to input the book? (yes or no)\n")
 if c == "yes":         
     d = a.Add()
-else:
-    d = a.minus()
+    d = a.Add()

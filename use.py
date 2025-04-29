@@ -1,7 +1,19 @@
 from mind import store
+game = True
 a = store()
 print(a.name)
-c = input("Would you like to input the book? (yes or no)\n")
-if c == "yes":         
-    d = a.Add()
-    d = a.Add()
+while game:
+    c = input("Would you like to input the book? (yes or no)\n")
+    if c == "yes":         
+        d = a.Add()
+    elif c == "no":
+        x = input("Do you want to remove the book?(yes or no)")
+        if x ==  "yes":
+            e = a.remove()
+        elif x == "no":
+            print("Ok, bye")
+            game = False
+        else:
+            print("please input yes or no")
+    else:
+        print("please input yes or no")

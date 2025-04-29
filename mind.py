@@ -19,7 +19,7 @@ class store():
             del self.book[self.title]
             print(self.book)
         except:
-            print("please check the book name")
+            print("please check the book name") 
         
 
         

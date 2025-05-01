@@ -28,3 +28,6 @@ class store():
             print(x)
             print(self.book[x]["author"])
             print(self.book[x]["price"])
+            print("")
+    
+    def save():

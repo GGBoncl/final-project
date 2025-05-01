@@ -15,7 +15,7 @@ while game:
             game = False
         else:
             print("please input yes or no")
-    elif c == "m":
+    elif c == "show":
         b = a.show()
     else:
         print("please input yes or no")

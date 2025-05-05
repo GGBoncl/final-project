@@ -30,4 +30,24 @@ class store():
             print(self.book[x]["price"])
             print("")
     
-    def save():
+    def save(self):
+        name = input("Enter the name for you file\n")
+        try:
+            with open (name, "w") as f:
+                for title in self.book: 
+                    self.author = self.book [title]["author"]
+                    self.price = self.book [title]["price"]
+                    f.write(f"Book name: {title}\nAuthor: {self.author}\nPrice: {self.price}\n\n")
+            print("It's done")
+        except:
+            print("error")
+
+    def load(self):
+        ask = input("What file you want to find\n")
+        try:
+            f = open(ask)
+            print(f.read())
+        except:
+            print("error")
+
+

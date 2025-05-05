@@ -3,20 +3,17 @@ game = True
 a = store()
 print(a.name)
 while game:
-    c = input("Would you like to input the book? (yes or no)\n")
-    if c == "yes":         
+    c = input("Would you like to input the book or you want to do other thing?\n1.Yes\n2.move\n3.Show\n4.save\n5.load\n")
+    if c == "1":         
         d = a.Add()
-    elif c == "no":
-        x = input("Do you want to remove the book?(yes or no)")
-        if x ==  "yes":
-            e = a.remove()
-        elif x == "no":
-            print("Ok, bye")
-            game = False
-        else:
-            print("please input yes or no")
-    elif c == "show":
+    elif c == "2":
+        e = a.remove()
+    elif c == "3":
         b = a.show()
+    elif c == "4":
+        f = a.save()
+    elif c == "5":
+        g = a.load()
     else:
-        print("please input yes or no")
+        print("Please input the correct option")
 

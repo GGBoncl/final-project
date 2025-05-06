@@ -44,7 +44,7 @@ class store():
             print("error")
 
     def load(self):
-        ask = input("What file you want to find\n")
+        ask = input("Whic file do you want to find\n")
         try:
             f = open(ask)
             print(f.read())
@@ -57,3 +57,4 @@ class store():
             os.remove(wen)
         else:
             print("The file does not exist\n")
+        

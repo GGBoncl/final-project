@@ -3,10 +3,10 @@ game = True
 a = store()
 print(a.name)
 while game:
-    c = input("Would you like to input the book or you want to do other thing?\n1.Yes\n2.move\n3.Show\n4.save\n5.load\n")
+    c = input("Would you like to input the book or you want to do other thing?\n1.Yes\n2.move\n3.show\n4.save\n5.load\n6.delete\n")
     if c == "1":         
         d = a.Add()
-    elif c == "2":
+    elif c == "2""move":
         e = a.remove()
     elif c == "3":
         b = a.show()
@@ -14,6 +14,8 @@ while game:
         f = a.save()
     elif c == "5":
         g = a.load()
+    elif c == "6":
+        h = a.delete()
     else:
         print("Please input the correct option")
 

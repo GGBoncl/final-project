@@ -1,3 +1,4 @@
+import os
 class store():
     def __init__(self):
         self.name = "Jason"
@@ -34,10 +35,10 @@ class store():
         name = input("Enter the name for you file\n")
         try:
             with open (name, "w") as f:
-                for title in self.book: 
-                    self.author = self.book [title]["author"]
-                    self.price = self.book [title]["price"]
-                    f.write(f"Book name: {title}\nAuthor: {self.author}\nPrice: {self.price}\n\n")
+                for x in self.book: 
+                    self.author = self.book [x]["author"]
+                    self.price = self.book [x]["price"]
+                    f.write(f"Book name: {x}\nAuthor: {self.author}\nPrice: {self.price}\n\n")
             print("It's done")
         except:
             print("error")
@@ -50,4 +51,9 @@ class store():
         except:
             print("error")
 
-
+    def delete(self):
+        wen = input("What file you want to delete\n")
+        if os.path.exists(wen):
+            os.remove(wen)
+        else:
+            print("The file does not exist\n")

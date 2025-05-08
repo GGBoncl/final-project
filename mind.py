@@ -10,7 +10,8 @@ class store():
         self.title = input("enter the name of the book you want to add\n")
         self.author = input("enter the author of the book you want to add\n")
         self.price = float(input("Enter the listing price if the book\n"))
-        print("You have added", self.title)       
+        print("You have added", self.title)
+        print("Please correct number")
         self.book[self.title] = {"author" : self.author, "price":self.price}
         print(self.book)
     
@@ -19,7 +20,7 @@ class store():
         try:
             str(self.title)
             if self.title in self.book:
-                del self.book[self.title]
+                del self.book[self.title]       
                 print(self.book)
         except:
             print("please check the book name")

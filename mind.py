@@ -3,6 +3,7 @@ class store():
     def __init__(self):
         self.name = "Jason"
         self.title = ""
+        self.author = ""
         self.price = 0 
         self.book = {}
         
@@ -26,11 +27,8 @@ class store():
             print("please check the book name")
         
     def show(self):
-        for x in self.book:
-            print(x)
-            print(self.book[x]["author"])
-            print(self.book[x]["price"])
-            print("")
+        for self.title in self.book.items():
+            print(f"Titile:{self.title},author : {self.author}, price:{self.price}")
     
     def save(self):
         name = input("Enter the name for you file\n")
@@ -45,12 +43,15 @@ class store():
             print("error")
 
     def load(self):
-        ask = input("Whic file do you want to find\n")
-        try:
-            f = open(ask)
-            print(f.read())
-        except:
-            print("error")
+        ask = input("Which file do you want to find\n")
+        with open(ask, "r") as f:
+            lines = f.readlines()
+            for i in range(0,len(lines),4):
+                self.title = lines[i].strip().replace("Title:","")
+                self.author = lines[i+1].strip().replace("Author:","")
+                self.price =float(lines[i+2].strip().replace("Price:",""))
+                self.book[self.title] = {"author" : self.author, "price":self.price}
+                
 
     def delete(self):
         wen = input("What file you want to delete\n")

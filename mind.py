@@ -14,7 +14,7 @@ class store():
         print("You have added", self.title)
         print("Please correct number")
         self.book[self.title] = {"author" : self.author, "price":self.price}
-        print(self.book)
+        print(self.title)
     
     def remove(self):
         self.title = input("enter the name of the book you want to remove\n")
@@ -27,8 +27,10 @@ class store():
             print("please check the book name")
         
     def show(self):
-        for self.title in self.book.items():
-            print(f"Titile:{self.title},author : {self.author}, price:{self.price}")
+        for self.title, info in self.book.items():
+            self.author = info["author"]
+            self.price = info["price"]
+            print(f"{self.title},author: {self.author}, price:{self.price}")
     
     def save(self):
         name = input("Enter the name for you file\n")

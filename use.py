@@ -1,6 +1,6 @@
-from mind import store
+from mind import Store
 game = True
-a = store()
+a = Store()
 print(a.name)
 print("Welcome to the book store.")
 while game:
@@ -8,15 +8,15 @@ while game:
     if c == "1":         
         d = a.Add()
     elif c == "2":
-        e = a.remove()
+        e = a.Remove()
     elif c == "3":
-        b = a.show()
+        b = a.Show()
     elif c == "4":
-        f = a.save()
+        f = a.Save()
     elif c == "5":
-        g = a.load()
+        g = a.Load()
     elif c == "6":
-        h = a.delete()
+        h = a.Delete()
     else:
         print("Please input the correct option")
 

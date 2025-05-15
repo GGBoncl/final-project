@@ -1,64 +1,68 @@
 import os
-class store():
+
+class Store():
     def __init__(self):
         self.name = "Jason"
-        self.title = ""
-        self.author = ""
-        self.price = 0 
-        self.book = {}
-        
+        self.book = {}  
+
     def Add(self):
-        self.title = input("enter the name of the book you want to add\n")
-        self.author = input("enter the author of the book you want to add\n")
-        self.price = float(input("Enter the listing price if the book\n"))
-        print("You have added", self.title)
-        print("Please correct number")
-        self.book[self.title] = {"author" : self.author, "price":self.price}
-        print(self.title)
-    
-    def remove(self):
-        self.title = input("enter the name of the book you want to remove\n")
+        title = input("Enter the name of the book you want to add:\n")
+        author = input("Enter the author of the book:\n")
         try:
-            str(self.title)
-            if self.title in self.book:
-                del self.book[self.title]       
-                print(self.book)
-        except:
-            print("please check the book name")
-        
-    def show(self):
-        for self.title, info in self.book.items():
-            self.author = info["author"]
-            self.price = info["price"]
-            print(f"{self.title},author: {self.author}, price:{self.price}")
-    
-    def save(self):
-        name = input("Enter the name for you file\n")
-        try:
-            with open (name, "w") as f:
-                for x in self.book: 
-                    self.author = self.book [x]["author"]
-                    self.price = self.book [x]["price"]
-                    f.write(f"Book name: {x}\nAuthor: {self.author}\nPrice: {self.price}\n\n")
-            print("It's done")
-        except:
-            print("error")
+            price = float(input("Enter the listing price of the book:\n"))
+        except ValueError:
+            print("Invalid price format.")
+            return
 
-    def load(self):
-        ask = input("Which file do you want to find\n")
-        with open(ask, "r") as f:
-            lines = f.readlines()
-            for i in range(0,len(lines),4):
-                self.title = lines[i].strip().replace("Title:","")
-                self.author = lines[i+1].strip().replace("Author:","")
-                self.price =float(lines[i+2].strip().replace("Price:",""))
-                self.book[self.title] = {"author" : self.author, "price":self.price}
-                
+        self.book[title] = {"author": author, "price": price}
+        print(f"You have added: {title}")
 
-    def delete(self):
-        wen = input("What file you want to delete\n")
-        if os.path.exists(wen):
-            os.remove(wen)
+    def Remove(self):
+        title = input("Enter the name of the book you want to remove:\n")
+        if title in self.book:
+            del self.book[title]
+            print(f"{title} has been removed.")
         else:
-            print("The file does not exist\n")
-        
+            print(f"No such book: {title}")
+
+    def Show(self):
+        if not self.book:
+            print("No books in store.")
+            return
+        for title, info in self.book.items():
+            print(f"Book name: {title}, author: {info['author']}, price: {info['price']}")
+
+    def Save(self):
+        name = input("Enter the name for your file:\n")
+        try:
+            with open(name, "w") as f:
+                for title, info in self.book.items(): 
+                    f.write(f"Book name: {title}\nAuthor: {info['author']}\nPrice: {info['price']}\n\n")
+            print("Books saved successfully.")
+        except Exception as e:
+            print("Error saving file:", e)
+
+    def Load(self):
+        ask = input("Which file do you want to load:\n")
+        if not os.path.exists(ask):
+            print("The file does not exist.")
+            return
+        try:
+            with open(ask, "r") as f:
+                lines = f.readlines()
+                for i in range(0, len(lines), 4):
+                    title = lines[i].strip().replace("Book name: ", "")
+                    author = lines[i+1].strip().replace("Author: ", "")
+                    price = float(lines[i+2].strip().replace("Price: ", ""))
+                    self.book[title] = {"author": author, "price": price}
+            print("Books loaded successfully.")
+        except Exception as e:
+            print("Error loading file:", e)
+
+    def Delete(self):
+        filename = input("What file do you want to delete:\n")
+        if os.path.exists(filename):
+            os.remove(filename)
+            print(f"{filename} has been deleted.")
+        else:
+            print("The file does not exist.")
